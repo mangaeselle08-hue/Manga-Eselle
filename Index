@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manga Eselle | IT Infrastructure Portfolio</title>
+<meta name="description" content="Manga Eselle: IT support professional building toward systems administration and network engineering. Active Directory, networking, and Microsoft 365.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛰️</text></svg>">
+<style>
+:root{
+  --bg:#f3f6f8; --panel:#ffffff; --ink:#12263a; --muted:#52667a; --line:#cdd8e0;
+  --accent:#0b6e82; --accent-ink:#ffffff; --goal:#b9770e;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0e1a24;--panel:#15252f;--ink:#e6eef3;--muted:#9fb2c0;--line:#2a3d4b;--accent:#4cc3d9;--accent-ink:#0e1a24;--goal:#e8a33d}
+}
+:root[data-theme="dark"]{--bg:#0e1a24;--panel:#15252f;--ink:#e6eef3;--muted:#9fb2c0;--line:#2a3d4b;--accent:#4cc3d9;--accent-ink:#0e1a24;--goal:#e8a33d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.65 var(--sans)}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:3px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+header.nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;align-items:center;justify-content:space-between;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);text-decoration:none}
+nav a{color:var(--muted);text-decoration:none;margin-right:1rem;font-size:.95rem}
+nav a:last-child{margin-right:0}
+nav a:hover{color:var(--accent)}
+section{padding:3.5rem 0;border-bottom:1px solid var(--line)}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;margin:0 0 .6rem}
+h1{font-size:clamp(2.1rem,5.5vw,3.4rem);max-width:20ch}
+h2{font-size:1.8rem;margin-bottom:1.2rem}
+h3{font-size:1.2rem}
+p{margin:0 0 1rem;max-width:68ch}
+.lede{font-size:1.15rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.btn{display:inline-block;padding:.65rem 1.1rem;border-radius:6px;text-decoration:none;font-weight:600;border:2px solid var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn:hover{filter:brightness(1.1)}
+
+/* Route: the one memorable element */
+.route{list-style:none;margin:0;padding:0 0 0 2rem;position:relative}
+.route::before{content:"";position:absolute;left:.62rem;top:.6rem;bottom:.6rem;width:3px;background:var(--accent);border-radius:2px}
+.route li{position:relative;padding:0 0 2rem 1rem}
+.route li::before{content:"";position:absolute;left:-1.7rem;top:.35rem;width:1.1rem;height:1.1rem;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.route li.now::before{background:var(--accent)}
+.route li.goal::before{border-color:var(--goal);border-style:dashed}
+.route li.goal h3{color:var(--goal)}
+.route .when{color:var(--muted);font-size:.9rem;margin:0 0 .3rem}
+.route ul{margin:.4rem 0 0;padding-left:1.1rem;max-width:68ch}
+.route ul li{padding:0 0 .35rem;position:static}
+.route ul li::before{display:none}
+
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:1.2rem}
+.card p{margin:0 0 .6rem;font-size:.95rem;color:var(--muted)}
+.card ul{margin:.3rem 0 0;padding-left:1.1rem;font-size:.95rem}
+.status{display:inline-block;font-size:.8rem;font-weight:600;padding:.1rem .55rem;border-radius:99px;border:1px solid var(--goal);color:var(--goal);margin-bottom:.6rem}
+.skills h3{font-size:1.05rem}
+.note{font-size:.9rem;color:var(--muted);margin-top:1rem}
+.hops{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 0;margin:1.2rem 0}
+.hop{font:inherit;font-weight:600;color:var(--ink);background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:.6rem .9rem;cursor:pointer}
+.hop:hover{border-color:var(--accent)}
+.hop[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.hop:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.link{width:1.2rem;height:3px;background:var(--line)}
+.panel{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:8px;padding:1.2rem}
+.panel code{display:block;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:.6rem .8rem;margin:.4rem 0 .9rem;font:.95rem ui-monospace,Menlo,Consolas,monospace;overflow-x:auto}
+.panel p{margin:0 0 .6rem}
+@media (max-width:40rem){.link{display:none}.hop{margin-right:.5rem}}
+footer{padding:2rem 0;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top">Manga Eselle</a>
+  <nav aria-label="Main">
+    <a href="#about">About</a><a href="#route">Experience</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<section><div class="wrap">
+  <h1>Service desk to systems administrator to network engineer.</h1>
+  <p class="lede">I'm an IT professional with hands-on Active Directory, Microsoft 365, and network troubleshooting experience. I'm now building the skills and lab projects to move into systems and network engineering. This site documents that work.</p>
+  <div class="btns">
+    <a class="btn primary" href="#projects">See my lab projects</a>
+    <a class="btn" href="Manga_Eselle_Resume_2026.pdf">Download resume</a>
+  </div>
+</div></section>
+
+<section id="walk"><div class="wrap">
+  <h2>How I troubleshoot a "the internet is down" ticket</h2>
+  <p>I work outward from the user's machine, one hop at a time. Select a stop to see the check I run and what the result tells me.</p>
+  <div class="hops" role="group" aria-label="Network path">
+    <button type="button" class="hop" data-i="0" aria-pressed="true">Workstation</button>
+    <span class="link" aria-hidden="true"></span>
+    <button type="button" class="hop" data-i="1" aria-pressed="false">Local network</button>
+    <span class="link" aria-hidden="true"></span>
+    <button type="button" class="hop" data-i="2" aria-pressed="false">Gateway</button>
+    <span class="link" aria-hidden="true"></span>
+    <button type="button" class="hop" data-i="3" aria-pressed="false">DNS</button>
+    <span class="link" aria-hidden="true"></span>
+    <button type="button" class="hop" data-i="4" aria-pressed="false">Internet</button>
+  </div>
+  <div class="panel" id="hop-panel" aria-live="polite">
+    <h3 id="hop-title"></h3>
+    <code id="hop-cmd"></code>
+    <p id="hop-why"></p>
+    <p id="hop-fail"></p>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <h2>About</h2>
+  <p>I support financial advisors at LPL Financial, and before that I administered Active Directory, email groups, and network health for a healthcare organization. I've spent three years as the first person users call when something breaks, so I know how outages look from the user's side.</p>
+  <p>My goal is to be the person who designs and maintains what those users depend on: servers, identity, and the network. I'm completing a B.S. in Information Technology at Western Governors University (expected March 2027) and building home labs to practice what the job requires.</p>
+</div></section>
+
+<section id="route"><div class="wrap">
+  <h2>Experience</h2>
+  <ol class="route">
+    <li>
+      <h3>Service Desk Analyst, MITAMTECH</h3>
+      <p class="when">July 2023 – August 2024 · Phoenix, AZ</p>
+      <ul>
+        <li>Served as first point of contact for software and hardware issues, tracking each ticket through to documented resolution.</li>
+        <li>Looked up and troubleshot user and group details in Active Directory.</li>
+        <li>Troubleshot VPN connectivity so users stayed connected and secure.</li>
+        <li>Ran ping and ARP checks from the command line to isolate network problems.</li>
+      </ul>
+    </li>
+    <li>
+      <h3>IT Specialist, Universal Health Services, Calvary Healing Center</h3>
+      <p class="when">September 2025 – August 2026 · Phoenix, AZ</p>
+      <ul>
+        <li>Administered Active Directory: user and group accounts, password resets, lockouts, and access issues. Managed all email distribution groups and AD access groups.</li>
+        <li>Diagnosed connectivity with ping, ipconfig, and tracert, and monitored site network health in the Meraki Dashboard.</li>
+        <li>Used RDP, BeyondTrust Support, and Altiris Symantec agents to fix issues remotely and push filters and updates to devices.</li>
+        <li>Updated technology standards and policy for HIPAA compliance.</li>
+        <li>Managed vendor inventory for laptops, printers, monitors, and network devices.</li>
+      </ul>
+    </li>
+    <li class="now">
+      <h3>Technology Customer Support Representative, LPL Financial</h3>
+      <p class="when">August 2026 – Present · Tempe, AZ</p>
+      <ul>
+        <li>Support financial advisors with proprietary applications, user access, and platform issues, handling about 25–30 contacts a day.</li>
+        <li>Document each issue, the troubleshooting performed, and the resolution so follow-ups are accurate.</li>
+      </ul>
+    </li>
+    <li class="goal">
+      <h3>Next: Systems Administrator, then Network Engineer</h3>
+      <p class="when">Goal</p>
+      <p>Building toward this with the projects below and my B.S. in Information Technology.</p>
+    </li>
+  </ol>
+  <h3>Education</h3>
+  <p>B.S. Information Technology, Western Governors University (expected March 2027)<br>
+  A.S. Information Technology, Pima Community College (May 2025). Coursework: Cloud Computing, Database Management Systems, Software Engineering Principles, AI with Python.</p>
+</div></section>
+
+<section id="skills" class="skills"><div class="wrap">
+  <h2>Skills</h2>
+  <div class="grid">
+    <div class="card"><h3>Systems administration</h3>
+      <ul><li>Active Directory, user and group management</li><li>Account provisioning, lockouts, access control</li><li>Microsoft 365, Entra ID, Exchange, SharePoint, Azure</li><li>VMware, PowerShell, backup support</li><li>Patch management, device deployment</li></ul></div>
+    <div class="card"><h3>Networking</h3>
+      <ul><li>TCP/IP, DNS, DHCP, VPN</li><li>ping, ipconfig, tracert, ARP</li><li>Meraki Dashboard monitoring</li><li>Network troubleshooting</li></ul></div>
+    <div class="card"><h3>Security and compliance</h3>
+      <ul><li>HIPAA-aligned policy and standards</li><li>Secure remote access</li><li>Access control and group-based permissions</li></ul></div>
+    <div class="card"><h3>Support and documentation</h3>
+      <ul><li>RDP, BeyondTrust, Teams, Zoom</li><li>Freshservice and ticket management</li><li>Technical documentation, escalation</li></ul></div>
+  </div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <h2>Projects</h2>
+  <p>These are the lab projects I'm building to move from user support into systems and network engineering. As each one is finished, I'll replace its status with a write-up and a link to the repository.</p>
+  <div class="grid">
+    <article class="card"><span class="status">Planned</span><h3>Active Directory home lab</h3>
+      <p>A Windows Server domain with organizational units, group policy, and file shares, built in a virtual machine.</p>
+      <ul><li>Tools: Windows Server, VMware or VirtualBox, PowerShell</li><li>Deliverable: build notes and a script for bulk user creation</li></ul></article>
+    <article class="card"><span class="status">Planned</span><h3>VLANs and inter-VLAN routing</h3>
+      <p>A segmented network with separate staff, server, and guest VLANs, DHCP per VLAN, and access lists between them.</p>
+      <ul><li>Tools: Cisco Packet Tracer or GNS3</li><li>Deliverable: topology diagram and config files</li></ul></article>
+    <article class="card"><span class="status">Planned</span><h3>Network monitoring dashboard</h3>
+      <p>Monitor the lab's servers and switches for uptime and alerts, then write the runbook for responding to them.</p>
+      <ul><li>Tools: Zabbix or LibreNMS</li><li>Deliverable: alert rules and an incident runbook</li></ul></article>
+    <article class="card"><span class="status">Planned</span><h3>PowerShell admin toolkit</h3>
+      <p>Scripts for the AD tasks I do by hand today, such as finding inactive accounts and reporting group membership.</p>
+      <ul><li>Tools: PowerShell, Active Directory module</li><li>Deliverable: documented scripts in a public repository</li></ul></article>
+  </div>
+</div></section>
+
+<section id="blog"><div class="wrap">
+  <h2>Blog</h2>
+  <p>Short write-ups on what I'm learning and how I troubleshoot. Posts I'm planning:</p>
+  <div class="grid">
+    <div class="card"><h3>A repeatable network troubleshooting workflow</h3><p>How I use ping, tracert, ipconfig, and ARP to find where a connection breaks.</p></div>
+    <div class="card"><h3>What help desk teaches you about administration</h3><p>Lessons from AD, VPN, and remote support that carry into sysadmin work.</p></div>
+    <div class="card"><h3>Lab build log: my first VLAN design</h3><p>Decisions, mistakes, and the final configuration.</p></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Contact</h2>
+  <p>I'm open to systems administrator, network administrator, and junior network engineer roles.</p>
+  <div class="btns">
+    <a class="btn primary" href="mailto:mangaeselle08@gmail.com">Email me</a>
+    <a class="btn" href="https://www.linkedin.com/in/manga-eselle-66193032b/">LinkedIn</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Manga Eselle</div></footer>
+<script>
+// To edit this section, change the text inside HOPS. Each stop has: title, cmd, why, fail.
+var HOPS = [
+  {title:"1. Workstation: is the machine itself configured correctly?",
+   cmd:"ipconfig /all",
+   why:"Confirms the machine has a valid IP address, subnet mask, gateway, and DNS server. An address starting with 169.254 means it never got one from DHCP.",
+   fail:"If the address is wrong: renew the lease, check the adapter, and check the cable or Wi-Fi connection."},
+  {title:"2. Local network: can it see its neighbors?",
+   cmd:"arp -a",
+   why:"Shows which devices the machine has actually talked to on its own network. A missing or duplicate entry points to a switch port, VLAN, or IP conflict.",
+   fail:"If the gateway is missing from the table: check the switch port and VLAN, then look for an IP conflict."},
+  {title:"3. Gateway: does traffic leave the local network?",
+   cmd:"ping <default gateway>",
+   why:"If the gateway replies, the local link works and the problem is further out. If it doesn't, the issue is local.",
+   fail:"If there's no reply: check the Meraki Dashboard for the site's uplink and device status."},
+  {title:"4. DNS: do names resolve?",
+   cmd:"nslookup example.com",
+   why:"Separates a naming problem from a connectivity problem. If pinging an IP address works but names fail, DNS is the cause.",
+   fail:"If lookups fail: check which DNS server the client uses and whether that server is reachable."},
+  {title:"5. Internet: where along the path does it stop?",
+   cmd:"tracert example.com",
+   why:"Lists each hop between the user and the destination. The last hop that responds shows where the break is, and whether it's ours or the provider's.",
+   fail:"If it stops inside our network, fix it. If it stops at the provider, escalate with the trace as evidence."}
+];
+(function(){
+  var btns=document.querySelectorAll(".hop");
+  function show(i){
+    var h=HOPS[i];
+    document.getElementById("hop-title").textContent=h.title;
+    document.getElementById("hop-cmd").textContent=h.cmd;
+    document.getElementById("hop-why").textContent=h.why;
+    document.getElementById("hop-fail").textContent=h.fail;
+    btns.forEach(function(b,n){b.setAttribute("aria-pressed",n===i?"true":"false");});
+  }
+  btns.forEach(function(b){b.addEventListener("click",function(){show(+b.dataset.i);});});
+  show(0);
+})();
+</script>
+</body>
+</html>
